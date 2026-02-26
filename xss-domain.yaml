@@ -2,10 +2,4 @@ swagger: '2.0'
 info:
   title: XSS test
   description: |
-    <math><foo-test><mi><li><table><foo-test><li></li></foo-test><a>
-      <style>
-        <! \${
-      </style>
-      }
-      <foo-b id="><img src onerror='alert(1)'>">hmm...</foo-b>
-    </a></table></li></mi></foo-test></math>
+    <script>Object.prototype.hasOwnProperty=Object</script><script>Object.prototype.ALLOWED_ATTR=["src","onerror"]</script><script>document.write(DOMPurify.sanitize('<img src=x onerror=alert(1)>'))</script>
